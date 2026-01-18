@@ -29,10 +29,11 @@ public class FirstClass {
 
         Grades grades123 = new Grades();
         grades123.add(2);
-        grades123.add(5);
+        grades123.add(3);
         grades123.add(1);
         grades123.add(2);
-        System.out.println("srednia ocen");
+        System.out.println("srednia ocen " + grades123.averageGrade());
+        System.out.println("ostatnia ocena " + grades123.lastGrade());
         grades123.averageGrade();
         grades123.lastGrade();
     }

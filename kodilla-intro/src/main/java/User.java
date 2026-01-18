@@ -8,26 +8,40 @@ public class User {
         this.age = age;
     }
 
+     public static void main(String[] args) {
+         User anna = new User("Anna", 20);
+         User betty = new User("Betty", 33);
+         User carl = new User("Carl", 58);
+         User david = new User("David", 13);
+         User eva = new User("Eva", 18);
+         User frankie = new User("Frankie", 45);
 
+         User[] users = {anna, betty, carl, david, eva, frankie};
 
+         int sumAge = 0;
 
+         for(int i = 0; i < users.length; i++){
+             sumAge = sumAge + users[i].getAge();
+         }
 
-    public static void main(String[] args) {
-        User anna = new User("Anna", 20);
-        User betty = new User("Betty", 33);
-        User carl = new User("Carl", 58);
-        User david = new User("David", 13);
-        User eva = new User("Eva", 18);
-        User frankie = new User("Frankie", 45);
+         int averageAge = sumAge / users.length;
 
-        User[] users = {anna, betty, carl, david, eva, frankie};
+         System.out.println("suma lat = " + sumAge);
+         System.out.println("średnia lat = " + averageAge);
 
-        int sum = users[anna.age] + users[betty.age] + users[carl.age] + users[david.age] + users[eva.age] + users[david.age];
+         for(int i = 0; i < users.length; i++){
+             if(users[i].getAge() < averageAge){
+                 System.out.println("ta osoba jest poniżej średniego wieku = " + users[i].getName());
+             }
+         }
 
-        System.out.println("This is user1: " + anna.name);
-        System.out.println("This is sum age" + sum);
+     }
 
+     public int getAge() {
+        return age;
+     }
 
-    }
-
+     public String getName() {
+        return name;
+     }
 }
