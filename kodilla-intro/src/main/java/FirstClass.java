@@ -36,5 +36,6 @@ public class FirstClass {
         System.out.println("ostatnia ocena " + grades123.lastGrade());
         grades123.averageGrade();
         grades123.lastGrade();
+
     }
 }
