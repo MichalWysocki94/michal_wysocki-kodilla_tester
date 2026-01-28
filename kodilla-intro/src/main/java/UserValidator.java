@@ -1,14 +1,15 @@
-/*public class UserValidator {
-
-    public void validate(User user){
+public class UserValidator {
 
 
-        for(int i = 0; i < users.length; i++){
-            if(users[i].getAge() < averageAge){
-                System.out.println("ta osoba jest poniżej średniego wieku = " + users[i].getName());
+    public void validate (User1 user){
+
+        if (user.getName() != null) {
+            if (user.getAge() > 30 && user.getHeight() > 160) {
+                System.out.println("User is older than 30 and taller than 160cm");
+            } else {
+                System.out.println("User is 30 (or younger) or 160cm (or shorter)");
             }
         }
-    }
 
+    }
 }
-*/

@@ -9,6 +9,8 @@ public class Notebook {
         this.year = year;
     }
 
+    Notebook greatNotebook = new Notebook(500, 1200, 2025);
+
 
     public void checkPrice (){
         if(this.price < 600){
