@@ -9,5 +9,12 @@ public class App {
         validator.validate(wojtek);
 
 
+        Book book1 = Book.of("Isaac Asimov", "The Galaxy");
+        Book book2 = Book.of("Adam Mickiewicz", "Dziady");
+        Book book3 = Book.of("Rok 1984", "George Orwell");
+
+        System.out.println(book1.getTitle());
+        System.out.println((book2.getTitle()));
+
     }
 }
