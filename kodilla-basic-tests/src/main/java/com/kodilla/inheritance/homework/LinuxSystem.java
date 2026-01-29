@@ -6,7 +6,8 @@ public class LinuxSystem extends OperatingSystem{
         super(releaseYear);
     }
 
-    public void welcomeLinux(){
+    @Override
+    public void welcome(){
         System.out.println("Welcome in Linux");
     }
 

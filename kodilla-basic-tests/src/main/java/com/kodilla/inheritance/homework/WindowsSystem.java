@@ -7,8 +7,8 @@ public class WindowsSystem extends OperatingSystem{
         super(releaseYear);
     }
 
-
-    public void welcomeWindows(){
+    @Override
+    public void welcome(){
         System.out.println("Welcome in Windows");
     }
 

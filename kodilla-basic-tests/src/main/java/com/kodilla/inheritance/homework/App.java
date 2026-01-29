@@ -5,6 +5,7 @@ public class App {
 
         WindowsSystem windows = new WindowsSystem(2020);
         windows.turnOn();
+        windows.welcome();
         System.out.println("This operating system was realised in " + windows.getReleaseYear());
 
         LinuxSystem linux = new LinuxSystem(1994);
