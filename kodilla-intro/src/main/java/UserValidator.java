@@ -1,6 +1,5 @@
 public class UserValidator {
 
-
     public void validate (User1 user){
 
         if (user.getName() != null) {
