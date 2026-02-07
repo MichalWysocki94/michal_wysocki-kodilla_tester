@@ -3,19 +3,20 @@ package com.kodilla.bank.homework;
 public class Bank {
 
 
-    CashMachine cashMachine_one = new CashMachine();
-    CashMachine cashMachine_two = new CashMachine();
-    CashMachine cashMachine_three = new CashMachine();
-    CashMachine cashMachine_four = new CashMachine();
+    private CashMachine[] cashMachines = new CashMachine[10];
+    private int size = 0;
 
-    CashMachine[] cashMachines = {cashMachine_one, cashMachine_two, cashMachine_three, cashMachine_four};
+    public void addCashMachine(CashMachine cashMachine){
+        cashMachines[size] = cashMachine;
+        size++;
+    }
 
 
 
 
     public int getTotalBalance(){
         int sum = 0;
-        for(int i = 0; i < cashMachines.length; i++){
+        for(int i = 0; i < size; i++){
             sum += cashMachines[i].getSum();
         }
         return sum;
@@ -23,7 +24,7 @@ public class Bank {
 
     public int getTotalWithdrawCount(){
         int counter = 0;
-        for(int i = 0; i < cashMachines.length; i++){
+        for(int i = 0; i < size; i++){
             counter += cashMachines[i].getWithdrawCount();
         }
         return counter;
@@ -31,7 +32,7 @@ public class Bank {
 
     public int getTotalDepositCount(){
         int counter = 0;
-        for (int i = 0; i < cashMachines.length; i++){
+        for (int i = 0; i < size; i++){
             counter += cashMachines[i].getDepositCount();
         }
         return counter;
@@ -43,7 +44,7 @@ public class Bank {
             return 0;
         }
         int totalSum = 0;
-        for (int i = 0; i < cashMachines.length; i++){
+        for (int i = 0; i < size; i++){
             totalSum += cashMachines[i].getAverageWithdraw() * cashMachines[i].getWithdrawCount();
         }
         return totalSum / totalCount;
@@ -56,7 +57,7 @@ public class Bank {
             return 0;
         }
         int totalSum = 0;
-        for (int i = 0; i <cashMachines.length; i++){
+        for (int i = 0; i < size; i++){
             totalSum += cashMachines[i].getAverageDeposit() * cashMachines[i].getDepositCount();
         }
         return totalSum / totalCount;
