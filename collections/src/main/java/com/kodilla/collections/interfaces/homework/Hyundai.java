@@ -17,6 +17,6 @@ public class Hyundai implements Car{
 
     @Override
     public void decreaseSpeed() {
-        speed -= -3;
+        speed -= 3;
     }
 }
