@@ -1,6 +1,19 @@
+import java.util.Random;
+
 public class aNauka {
 
     public static void main(String[] args) {
+
+
+        Random random = new Random();
+        int c = random.nextInt(10) + 1;
+
+        for (int i = 0; i < 20; i++){
+            int r = random.nextInt(71) + 50;
+            System.out.println("Wylosowana liczba to: " + r);
+        }
+
+
         int a = 7;
         int b = 12;
 
