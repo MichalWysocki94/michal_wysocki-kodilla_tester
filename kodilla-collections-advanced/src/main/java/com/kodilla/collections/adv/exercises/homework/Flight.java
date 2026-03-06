@@ -30,4 +30,12 @@ public class Flight {
     public int hashCode() {
         return Objects.hash(departure, arrival);
     }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "departure='" + departure + '\'' +
+                ", arrival='" + arrival + '\'' +
+                '}';
+    }
 }
