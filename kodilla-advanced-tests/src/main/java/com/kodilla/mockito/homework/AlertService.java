@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class AlertService {
 
-    Map<String, Set<Person>> subscriptions = new HashMap<>();
+    private Map<String, Set<Person>> subscriptions = new HashMap<>();
 
     public void subscribe(Person person, String city) {
 
@@ -21,9 +21,7 @@ public class AlertService {
     }
 
     public void unsubscribeCity (String city, Person person){
-        if (subscriptions.containsKey(city)){
             subscriptions.get(city).remove(person);
-        }
     }
 
     public void unsubscribeFromAllCities(Person person) {
@@ -35,6 +33,7 @@ public class AlertService {
         Set<Person> allPersons = new HashSet<>();
         subscriptions.values().forEach(allPersons::addAll);
         allPersons.forEach(person -> person.receive(alert));
+        System.out.println("Wiadomość została wysłana do wszystkich subskrybentów systemu");
     }
 
     public void removeCity(String city) {
