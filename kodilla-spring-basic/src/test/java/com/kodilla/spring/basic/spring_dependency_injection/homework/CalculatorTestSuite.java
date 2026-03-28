@@ -8,42 +8,45 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+
 class CalculatorTestSuite {
 
+    ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
+    Calculator bean = context.getBean(Calculator.class);
 
     @Test
     public void shouldReturnCorrectSum (){
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
-        Calculator bean = context.getBean(Calculator.class);
+
         double sum = bean.add(6.2, 3.8);
-        Assertions.assertEquals(10.0, sum);
+        Assertions.assertEquals(10.0, sum, 0.001);
     }
 
     @Test
     public void shouldReturnCorrectSubtraction() {
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
-        Calculator bean = context.getBean(Calculator.class);
+
         double subtract = bean.subtract(13.5,3.5);
-        Assertions.assertEquals(10.0, subtract);
+        Assertions.assertEquals(10.0, subtract, 0.001);
     }
 
     @Test
     public void shouldReturnCorrectDivideNumber() {
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
-        Calculator bean = context.getBean(Calculator.class);
+
         double dividedNumber = bean.divide(12.0, 3.0);
-        Assertions.assertEquals(4.0, dividedNumber);
+        Assertions.assertEquals(4.0, dividedNumber, 0.001);
     }
 
     @Test
     public void shouldReturnCorrectMultiplication() {
 
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
-        Calculator bean = context.getBean(Calculator.class);
         double multiplication = bean.multiply( 6.0, 8.0);
-        Assertions.assertEquals(48.0, multiplication);
+        Assertions.assertEquals(48.0, multiplication, 0.001);
     }
 
+    @Test
+    public void shouldThrowExceptionWhenDividingByZero() {
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            bean.divide(12.0, 0.0);
+        });
+    }
 
 }
