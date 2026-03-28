@@ -8,29 +8,36 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+
 class ShippingCenterTestSuite {
+
+    private final ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
+    private final ShippingCenter bean = context.getBean(ShippingCenter.class);
 
     @Test
     public void shouldReturnSuccessDelivery(){
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
-        //given
-        ShippingCenter bean = context.getBean(ShippingCenter.class);
         //when
-        String notification = bean.sendPackage("Piotrkowska 51", 23);
+        String notification = bean.sendPackage("Piotrkowska 51", 29);
         //then
         Assertions.assertEquals("Package delivered to: Piotrkowska 51", notification);
     }
 
     @Test
     public void shouldReturnFailDelivery(){
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
-        //given
-        ShippingCenter bean = context.getBean(ShippingCenter.class);
         //when
-        String notification = bean.sendPackage("Piotrkowska 51", 35);
+        String notification = bean.sendPackage("Piotrkowska 51", 31);
         //then
         Assertions.assertEquals("Package not delivered to: Piotrkowska 51", notification);
     }
+
+    @Test
+    public void shouldReturnSuccessDeliveryForWeight30Kg(){
+        //when
+        String notification = bean.sendPackage("Piotrkowska 51", 30);
+        //then
+        Assertions.assertEquals("Package delivered to: Piotrkowska 51", notification);
+    }
+
+
 
 }
