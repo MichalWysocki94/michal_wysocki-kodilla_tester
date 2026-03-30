@@ -19,7 +19,7 @@ class UserValidatorTestSuite {
 
     @ParameterizedTest
     @NullAndEmptySource
-    public void shouldReturnFalseIfSringIsEmptyOrNullInEmail(String text){
+    public void shouldReturnFalseIfSrtingIsEmptyOrNullInEmail(String text){
         assertFalse(userValidator.validateEmail(text));
     }
 
