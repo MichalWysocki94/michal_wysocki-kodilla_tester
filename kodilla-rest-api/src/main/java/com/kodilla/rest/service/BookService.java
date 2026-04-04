@@ -18,8 +18,13 @@ public class BookService {
         books.add(bookDto);
     }
 
-    public void removeBook (BookDto bookDto) {
-        books.remove(bookDto);
+    public String removeBook (BookDto bookDto) {
+        if(getBooks().contains(bookDto)) {
+            books.remove(bookDto);
+            return "Ksiązka usunięta";
+        } else {
+            return "Nie bylo takiej ksiazki";
+        }
     }
 
 }
