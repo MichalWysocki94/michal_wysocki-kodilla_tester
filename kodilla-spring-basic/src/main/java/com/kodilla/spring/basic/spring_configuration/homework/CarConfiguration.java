@@ -3,21 +3,36 @@ package com.kodilla.spring.basic.spring_configuration.homework;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-
-import static java.util.Locale.of;
+import java.time.Month;
 
 @Configuration
 public class CarConfiguration {
 
     @Bean
-    public Car car() {
-        LocalDateTime time = LocalDateTime.now();
-        int month = time.getMonthValue();
-        int day = time.getDayOfMonth();
+    public LocalDateTime currentTime() {
+        return LocalDateTime.now();
+    }
 
-        Car car = null;
-        return car;
+    @Bean
+    public Car car(LocalDateTime currentTime) {
+
+        Month month = currentTime.getMonth();
+        int hour = currentTime.getHour();
+
+        boolean lightsOn = (hour >= 20 || hour < 6);
+
+        switch (month) {
+            case DECEMBER:
+            case JANUARY:
+            case FEBRUARY:
+                return new SUV(lightsOn);
+            case JUNE:
+            case JULY:
+            case AUGUST:
+                return new Cabrio(lightsOn);
+            default:
+                return new Sedan(lightsOn);
+        }
     }
 }
