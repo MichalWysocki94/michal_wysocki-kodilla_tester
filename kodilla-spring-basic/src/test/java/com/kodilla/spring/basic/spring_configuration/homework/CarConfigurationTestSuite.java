@@ -13,7 +13,7 @@ class CarConfigurationTestSuite {
 
     @Test
     void shouldReturnSUVInWinter() {
-        Car car = carConfiguration.car(LocalDateTime.of(2024, 1, 10, 22, 0));
+        Car car = carConfiguration.car(LocalDateTime.of(2024, 2, 10, 20, 0));
 
         Assertions.assertEquals("SUV", car.getCarType());
         Assertions.assertTrue(car.hasHeadlightsTurnedOn());
@@ -21,9 +21,18 @@ class CarConfigurationTestSuite {
 
     @Test
     void shouldReturnCabrioInSummer() {
-        Car car = carConfiguration.car(LocalDateTime.of(2024, 7, 10, 12, 0));
+        Car car = carConfiguration.car(LocalDateTime.of(2024, 6, 10, 19, 59));
 
         Assertions.assertEquals("Cabrio", car.getCarType());
         Assertions.assertFalse(car.hasHeadlightsTurnedOn());
     }
+
+    @Test
+    void shouldReturnSedanInSpring() {
+        Car car = carConfiguration.car(LocalDateTime.of(2024, 11, 22, 6, 1));
+
+        Assertions.assertEquals("Sedan", car.getCarType());
+        Assertions.assertFalse(car.hasHeadlightsTurnedOn());
+    }
+
 }
