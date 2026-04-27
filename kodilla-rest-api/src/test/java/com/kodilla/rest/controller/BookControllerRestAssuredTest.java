@@ -35,7 +35,7 @@ class BookControllerRestAssuredTest {
     @Test
     void shouldFetchBooks() {
         // given
-        when(bookService.getBooks())
+        Mockito.when(bookService.getBooks())
                 .thenReturn(List.of(
                         new BookDto("Title 1", "Author 2"),
                         new BookDto("Title 2", "Author 2"))
@@ -65,7 +65,7 @@ class BookControllerRestAssuredTest {
         .when()
                 .post("/books")
         .then()
-                .status(HttpStatus.OK);
+                .statusCode(HttpStatus.OK.value());
 
         Mockito.verify(bookService).addBook(bookDto);
     }
