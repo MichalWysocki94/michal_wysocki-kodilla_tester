@@ -7,7 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AllegroTestingApp {
     public static void main(String[] args) {
@@ -15,10 +16,12 @@ public class AllegroTestingApp {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-allow-origins=*");
         WebDriver driver = new ChromeDriver(chromeOptions);
-        driver.get("http://allegro.pl/");
+        driver.get("https://allegro.pl/");
 
-        WebElement inputField = driver.findElement(By.xpath("//button"));
-        inputField.submit();
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button")));
+        WebElement confirmationField = driver.findElement(By.xpath("//button"));
+        confirmationField.click();
 
         Alert alert = driver.switchTo().alert();
         alert.accept();
