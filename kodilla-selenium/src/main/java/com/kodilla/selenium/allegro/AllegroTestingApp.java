@@ -21,29 +21,39 @@ public class AllegroTestingApp {
 
         WebDriver driver = new ChromeDriver(chromeOptions);
 
-        ((JavascriptExecutor) driver).executeScript(
-                "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
-        );
+        try {
+            ((JavascriptExecutor) driver).executeScript(
+                    "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+            );
 
-        driver.get("https://allegro.pl/");
+            driver.get("https://allegro.pl/");
 
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button")));
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//button[contains(., 'Zgadzam')]")
+            ));
 
-        WebElement confirmationField = driver.findElement(By.xpath("//button"));
-        confirmationField.click();
+            WebElement confirmationField = driver.findElement(
+                    By.xpath("//button[contains(., 'Zgadzam')]")
+            );
+            confirmationField.click();
 
-//        Alert alert = driver.switchTo().alert();
-//        alert.accept();
+////        Alert alert = driver.switchTo().alert();
+////        alert.accept();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@data-role,'search-scope-select')]")));
-        WebElement selectField = driver.findElement(By.xpath("//*[contains(@data-role,'search-scope-select')]/select[1]"));
-        Select categorySelect = new Select(selectField);
-        categorySelect.selectByIndex(5);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div/div[3]/header/div[1]/div/div[2]/div[1]/form/div[3]/div")));
+            WebElement selectField = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div/div[3]/header/div[1]/div/div[2]/div[1]/form/div[3]/div"));
+            selectField.click();
 
-        WebElement writeField = driver.findElement(By.xpath("//input"));
-        writeField.sendKeys("Mavic mini");
-        writeField.submit();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//option[contains(., 'Elektronika')]")));
+            WebElement elektronikaField = driver.findElement(By.xpath("//option[contains(., 'Elektronika')]"));
+            elektronikaField.click();
 
+            WebElement writeField = driver.findElement(By.xpath("//input[@type='search']"));
+            writeField.sendKeys("Mavic mini");
+            writeField.submit();
+        } finally {
+            driver.quit();
+        }
     }
 }
