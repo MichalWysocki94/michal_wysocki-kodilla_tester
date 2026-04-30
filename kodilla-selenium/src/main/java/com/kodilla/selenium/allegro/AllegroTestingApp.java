@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class AllegroTestingApp {
     public static void main(String[] args) {
 
@@ -52,6 +54,16 @@ public class AllegroTestingApp {
             WebElement writeField = driver.findElement(By.cssSelector("input[placeholder*='czego szukasz?']"));
             writeField.sendKeys("Mavic mini");
             writeField.submit();
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li > article")));
+            List<WebElement> elements = driver.findElements(By.cssSelector("li > article"));
+
+            for (WebElement element : elements) {
+                System.out.println(element.getText());
+                System.out.println("------------");
+            }
+
+
         } finally {
             driver.quit();
         }
