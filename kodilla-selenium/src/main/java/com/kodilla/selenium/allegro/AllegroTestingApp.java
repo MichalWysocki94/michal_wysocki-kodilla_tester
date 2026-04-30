@@ -41,15 +41,15 @@ public class AllegroTestingApp {
 ////        Alert alert = driver.switchTo().alert();
 ////        alert.accept();
 
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div/div[3]/header/div[1]/div/div[2]/div[1]/form/div[3]/div")));
-            WebElement selectField = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div/div[3]/header/div[1]/div/div[2]/div[1]/form/div[3]/div"));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class*='meqh_en mp7g_oh mr3m_1']")));
+            WebElement selectField = driver.findElement(By.cssSelector("div[class*='meqh_en mp7g_oh mr3m_1']"));
             selectField.click();
 
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//option[contains(., 'Elektronika')]")));
-            WebElement elektronikaField = driver.findElement(By.xpath("//option[contains(., 'Elektronika')]"));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("option[value*='/kategoria/elektronika']")));
+            WebElement elektronikaField = driver.findElement(By.cssSelector("option[value*='/kategoria/elektronika']"));
             elektronikaField.click();
 
-            WebElement writeField = driver.findElement(By.xpath("//input[@type='search']"));
+            WebElement writeField = driver.findElement(By.cssSelector("input[placeholder*='czego szukasz?']"));
             writeField.sendKeys("Mavic mini");
             writeField.submit();
         } finally {
