@@ -1,12 +1,8 @@
 package com.kodilla.selenium.pom.homework;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -25,13 +21,26 @@ public class KodillaStorePom extends AbstractStorePom {
         PageFactory.initElements(driver, this);
     }
 
-    public void search(String type){
-        searchField.sendKeys(type);
-        searchField.sendKeys(Keys.ENTER);
+    public int search(String text) {
+        searchField.clear();
+        searchField.sendKeys(text);
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfAllElements(results));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+        wait.until(driver ->
+                searchField.getAttribute("value").equals(text)
+        );
+
+        return driver.findElements(By.cssSelector(".element")).size();
     }
+
+//    public void search(String type){
+//        searchField.sendKeys(type);
+//        searchField.sendKeys(Keys.ENTER);
+//
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//        wait.until(ExpectedConditions.visibilityOfAllElements(results));
+//    }
 
     public int getResultsCount() {
         return results.size();

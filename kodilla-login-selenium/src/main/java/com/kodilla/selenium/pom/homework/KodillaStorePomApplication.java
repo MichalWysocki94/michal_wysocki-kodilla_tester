@@ -9,13 +9,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class KodillaStorePomApplication {
     public static void main(String[] args) {
 
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--remote-allow-origins=*");
-        chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
-        chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-        chromeOptions.setExperimentalOption("useAutomationExtension", false);
-        WebDriver driver = new ChromeDriver(chromeOptions);
+        WebDriver driver;
+        driver = DriverFactory.getDriver();
         driver.navigate().to("https://kodilla.com/pl/test/store");
         KodillaStorePom storePom = new KodillaStorePom(driver);
         storePom.search("NoteBook");
