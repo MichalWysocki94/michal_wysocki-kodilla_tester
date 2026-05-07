@@ -27,4 +27,9 @@ public class WalletSteps {
         assertEquals(expected, cashSlot.getContents());
     }
 
+    @Then("the balance of my wallet should be ${int}")
+    public void the_balance_of_my_wallet_should_be_$(Integer updatedBalance) {
+        assertEquals(updatedBalance,  wallet.getBalance(), "Incorrect wallet balance");
+    }
+
 }
