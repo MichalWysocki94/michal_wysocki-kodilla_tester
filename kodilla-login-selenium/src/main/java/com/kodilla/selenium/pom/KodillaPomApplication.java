@@ -14,7 +14,7 @@ public class KodillaPomApplication {
             chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
             chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
             chromeOptions.setExperimentalOption("useAutomationExtension", false);
-            WebDriver driver = new ChromeDriver(chromeOptions);
+        WebDriver driver = new ChromeDriver(chromeOptions);
         driver.navigate().to("https://kodilla.com/pl/test/login");
         KodillaLoginPom loginPom = new KodillaLoginPom(driver);
         loginPom.login("test@kodilla.com", "haslo");

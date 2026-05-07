@@ -19,12 +19,11 @@ public class KodillaLoginPomTest {
     @BeforeEach
     public void setup() {
         WebDriverManager.chromedriver().setup();
-
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--remote-allow-origins=*");
-        chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
-        chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-        chromeOptions.setExperimentalOption("useAutomationExtension", false);
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("--remote-allow-origins=*");
+            chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
+            chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+            chromeOptions.setExperimentalOption("useAutomationExtension", false);
         driver = new ChromeDriver(chromeOptions);
         driver.navigate().to("https://kodilla.com/pl/test/login");
         loginPom = new KodillaLoginPom(driver);
