@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WalletSteps {
 
-    private Wallet wallet = new Wallet();
-    private CashSlot cashSlot = new CashSlot();
+    private final Wallet wallet = new Wallet();
+    private final CashSlot cashSlot = new CashSlot();
 
     @Given("I have deposited ${int} in my wallet")
     public void i_have_deposited_$_in_my_wallet(Integer amount) {
@@ -29,7 +29,10 @@ public class WalletSteps {
 
     @Then("the balance of my wallet should be ${int}")
     public void the_balance_of_my_wallet_should_be_$(Integer updatedBalance) {
-        assertEquals(updatedBalance,  wallet.getBalance(), "Incorrect wallet balance");
+
+        assertEquals(updatedBalance,
+                wallet.getBalance(),
+                "Incorrect wallet balance");
     }
 
 }

@@ -11,16 +11,33 @@ public class Cashier {
 
     public void withdraw(Wallet wallet, int amount) {
 
-        if(amount > 0 && wallet.getBalance() >= amount) {
+        try {
+
             wallet.debit(amount);
+
             cashSlot.dispense(amount);
 
             message = "Withdrawal successful";
-        } else {
+
+        } catch (IllegalArgumentException e) {
+
             cashSlot.dispense(0);
-            message = "You don't have enough money in your wallet";
+
+            message = e.getMessage();
         }
     }
+//    public void withdraw(Wallet wallet, int amount) {
+//
+//        if(amount > 0 && wallet.getBalance() >= amount) {
+//            wallet.debit(amount);
+//            cashSlot.dispense(amount);
+//
+//            message = "Withdrawal successful";
+//        } else {
+//            cashSlot.dispense(0);
+//            message = "You don't have enough money in your wallet";
+//        }
+//    }
 
     public String getMessage(){
         return message;

@@ -37,7 +37,7 @@ public class WalletBalanceSteps {
     public void i_should_be_told_that_i_don_t_have_enough_money_in_my_wallet() {
 
         assertEquals(
-                "You don't have enough money in your wallet",
+                "Not enough money in wallet",
                 cashier.getMessage()
         );
     }
