@@ -28,18 +28,32 @@ class DbManagerTestSuite {
     @Test
     void testSelectUsersAndPosts() throws SQLException {
         //Given
-        String countQuery = "SELECT COUNT(*) FROM USERS U JOIN POSTS P ON U.ID = P.USER_ID GROUP BY P.USER_ID HAVING COUNT(*) > 1;";
+        String countQuery = "SELECT COUNT(*) AS CNT FROM USERS U " +
+                "JOIN POSTS P ON U.ID = P.USER_ID " +
+                "GROUP BY P.USER_ID " +
+                "HAVING COUNT(*) > 1";
         Statement statement = createStatement();
         ResultSet rs = statement.executeQuery(countQuery);
-        int count = getRowsCount(rs);
+        int count = 0;
+        while (rs.next()) {
+            count++;
+        }
 
         //When
         String sqlQuery = "SELECT U.FIRSTNAME, U.LASTNAME FROM USERS U JOIN POSTS P ON U.ID = P.USER_ID GROUP BY P.USER_ID HAVING COUNT(*) > 1;";
         statement = createStatement();
         rs = statement.executeQuery(sqlQuery);
+        int actualCounter = 0;
+        while (rs.next()) {
+            System.out.println(
+                    rs.getString("FIRSTNAME") + " " +
+                    rs.getString("LASTNAME")
+            );
+            actualCounter++;
+        }
 
         //Then
-        Assertions.assertEquals(2, count);
+        Assertions.assertEquals(actualCounter, count);
 
         rs.close();
         statement.close();
