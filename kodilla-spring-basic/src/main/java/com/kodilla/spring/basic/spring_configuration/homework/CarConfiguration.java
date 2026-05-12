@@ -1,20 +1,19 @@
 package com.kodilla.spring.basic.spring_configuration.homework;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+
 
 import java.time.LocalDateTime;
 import java.time.Month;
 
-@Configuration
+
 public class CarConfiguration {
 
-    @Bean
+
     public LocalDateTime currentTime() {
         return LocalDateTime.now();
     }
 
-    @Bean
+
     public Car car(LocalDateTime currentTime) {
 
         Month month = currentTime.getMonth();

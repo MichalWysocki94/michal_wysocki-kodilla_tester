@@ -1,7 +1,7 @@
 package com.kodilla.spring.basic.spring_configuration.homework;
 
 public class SUV implements Car{
-    private boolean headlightsOn;
+    private final boolean headlightsOn;
 
     public SUV(boolean headlightsOn) {
         this.headlightsOn = headlightsOn;
